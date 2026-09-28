@@ -24,19 +24,19 @@ function ContactForm() {
       </p>
       <label className="block space-y-2">
         <span className="font-mono text-[length:var(--text-mono)] text-text-secondary">Name</span>
-        <input name="name" required minLength={2} maxLength={80} autoComplete="name" placeholder="Your name" className={fieldClass} />
+        <input name="name" required minLength={2} maxLength={80} autoComplete="name" placeholder="Your name" className={fieldClass} suppressHydrationWarning />
       </label>
       <label className="block space-y-2">
         <span className="font-mono text-[length:var(--text-mono)] text-text-secondary">Email</span>
-        <input name="email" type="email" required maxLength={254} autoComplete="email" placeholder="you@email.com" className={fieldClass} />
+        <input name="email" type="email" required maxLength={254} autoComplete="email" placeholder="you@email.com" className={fieldClass} suppressHydrationWarning />
       </label>
       <label className="block space-y-2">
         <span className="font-mono text-[length:var(--text-mono)] text-text-secondary">Message</span>
-        <textarea name="message" required minLength={10} maxLength={5000} rows={5} placeholder="What should we build?" className={fieldClass} />
+        <textarea name="message" required minLength={10} maxLength={5000} rows={5} placeholder="What should we build?" className={fieldClass} suppressHydrationWarning />
       </label>
       <label style={{ position: "absolute", opacity: 0, pointerEvents: "none", zIndex: -1 }} aria-hidden="true">
         <span>Company</span>
-        <input name="company" tabIndex={-1} autoComplete="off" />
+        <input name="company" tabIndex={-1} autoComplete="off" suppressHydrationWarning />
       </label>
       {state.error && <p className="text-sm text-red-400">{state.error}</p>}
       {state.ok && <p className="text-sm text-warm">Message received. I&apos;ll get back to you soon.</p>}
@@ -93,13 +93,11 @@ export function Contact() {
         <div className="grid items-start gap-10">
           <div className="space-y-6">
             <p className="text-text-secondary break-words">
-              Work: {SITE.emailWork}
+              Email: {SITE.emailWork}
               <br />
-              Personal: {SITE.emailPersonal}
+              Phone: {SITE.phone}
               <br />
-              {SITE.phone}
-              <br />
-              {SITE.location}
+              Location: {SITE.location}
             </p>
             <div className="flex flex-wrap gap-3">
               <MagneticButton
@@ -123,10 +121,7 @@ export function Contact() {
                 LinkedIn
               </a>
               <a href={`mailto:${SITE.emailWork}`} className="transition-colors hover:text-warm">
-                Work email
-              </a>
-              <a href={`mailto:${SITE.emailPersonal}`} className="transition-colors hover:text-warm">
-                Personal
+                Email
               </a>
             </div>
           </div>

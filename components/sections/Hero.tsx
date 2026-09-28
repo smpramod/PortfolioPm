@@ -7,9 +7,9 @@ import { SITE } from "@/lib/site";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const stats = [
-  { value: "2+", label: "Years Coding" },
-  { value: "5+", label: "Technologies" },
-  { value: "2", label: "Live Projects" },
+  { value: "180+", label: "DSA Problems" },
+  { value: "4★", label: "Java & SQL" },
+  { value: "80%", label: "Socket Redux" },
 ];
 
 export function Hero() {
@@ -31,9 +31,9 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.08, ease }}
           className="font-serif text-[length:var(--text-hero)] leading-[0.92] text-text-primary"
         >
-          Abhishek
+          Pramod
           <br />
-          Farande
+          Margudre
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 18, filter: "blur(4px)" }}
@@ -41,7 +41,7 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.16, ease }}
           className="mt-5 max-w-full font-mono text-[length:var(--text-mono)] tracking-[0.12em] text-accent uppercase sm:tracking-[0.18em]"
         >
-          Software Developer · Kolhapur
+          Backend Developer · Software Engineer
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 18, filter: "blur(4px)" }}
@@ -49,8 +49,8 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.24, ease }}
           className="mt-6 max-w-md text-pretty text-text-secondary"
         >
-          Software Developer building multi-tenant College ERP modules for academics,
-          scholarships, admissions, and admin masters — using Next.js, NestJS, and MongoDB.
+          Backend Developer shipping production features in a live ERP product at Seratek Systems
+          using NestJS, Redis, MongoDB, and TypeScript.
         </motion.p>
         <div className="mt-8 flex flex-wrap gap-6 sm:mt-10 sm:gap-8">
           {stats.map((stat, index) => (

@@ -5,10 +5,13 @@ import { motion } from "framer-motion";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const facts = [
-  { label: "Education", value: "B.Tech IT — Walchand Institute of Technology · CGPA 8.76" },
-  { label: "Diploma", value: "DKTE YCP, Ichalkaranji · 82.46%" },
-  { label: "Now", value: "Software Developer — Seratek Systems" },
-  { label: "Open to", value: "Full-time & freelance opportunities" },
+  { label: "Education", value: "B.Tech CS & Business Systems — KIT Kolhapur · CGPA 8.3" },
+  { label: "Diploma", value: "Computer Engineering — GP Miraj · 88.63%" },
+  { label: "School", value: "SSC — New Highschool Sangli · 90.00%" },
+  { label: "Achievements", value: "HackerRank 4★ Java & 4★ SQL · 180+ DSA Solved" },
+  { label: "Leadership", value: "Vice President & Event Head (COMPESA Tech Fest)" },
+  { label: "Now", value: "Backend Developer — Seratek Systems" },
+  { label: "Open to", value: "GET / DET / Junior Developer opportunities" },
 ];
 
 export function About() {
@@ -32,7 +35,7 @@ export function About() {
             transition={{ duration: 0.8, delay: 0.08, ease }}
             className="mt-3 font-serif text-[length:var(--text-h2)] text-pretty"
           >
-            I build things for the web.
+            I build reliable backend systems.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
@@ -41,9 +44,10 @@ export function About() {
             transition={{ duration: 0.8, delay: 0.16, ease }}
             className="mt-6 text-pretty text-text-secondary"
           >
-            B.Tech IT graduate from Walchand Institute of Technology. Software Developer
-            at Seratek Systems (formerly Akron Systems), building a multi-tenant College ERP
-            for academics, scholarships, admissions, and admin masters.
+            Backend Developer with hands-on experience shipping production features
+            in a live ERP product at Seratek Systems using NestJS, Redis, MongoDB, and TypeScript.
+            Completed B.Tech in CS & Business Systems (CGPA 8.3, KIT Kolhapur, June 2026).
+            Backend-first with working knowledge of React, Android, and ML integration.
           </motion.p>
           <motion.blockquote
             initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
@@ -52,7 +56,7 @@ export function About() {
             transition={{ duration: 0.8, delay: 0.24, ease }}
             className="mt-8 border-l-2 border-accent pl-5 font-serif text-[clamp(1.25rem,2vw,1.75rem)] leading-snug text-text-primary"
           >
-            I care about clean code, fast UIs, and solving real problems.
+            I care about referential data integrity, robust API security, and high-throughput backend architecture.
           </motion.blockquote>
         </div>
         <motion.aside

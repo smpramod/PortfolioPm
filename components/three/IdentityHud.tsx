@@ -27,16 +27,16 @@ function createHudTexture() {
   ctx.fillText("IDENTITY  //  HUD", 80, 130);
   ctx.fillStyle = "#f4f1ea";
   ctx.font = "500 64px 'Instrument Serif', Georgia, serif";
-  ctx.fillText("Abhishek", 80, 230);
-  ctx.fillText("Farande", 80, 304);
+  ctx.fillText("Pramod", 80, 230);
+  ctx.fillText("Margudre", 80, 304);
 
   const rows = [
-    ["ROLE", "Software Developer"],
-    ["FOCUS", "College ERP"],
-    ["EDU", "B.Tech IT  8.76"],
+    ["ROLE", "Backend Developer"],
+    ["FOCUS", "NestJS · Redis · Mongo"],
+    ["EDU", "B.Tech CSE  8.3 CGPA"],
     ["NOW", "Seratek Systems"],
     ["BASE", "Kolhapur, IN"],
-    ["OPEN", "Full-time / freelance"],
+    ["OPEN", "GET / Junior Backend"],
   ];
   rows.forEach((row, i) => {
     const y = 420 + i * 118;

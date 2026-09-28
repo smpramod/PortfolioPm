@@ -250,7 +250,7 @@ export function Navbar() {
             ref={logoRef}
             href="#hero"
             data-cursor="interactive"
-            aria-label="AF — back to top"
+            aria-label="PM — back to top"
             style={{ x: isDesktop ? logoX : 0 }}
             className="relative pointer-events-auto shrink-0 flex items-center rounded-full border border-text-primary/10 bg-surface/90 px-2 py-0.5 sm:px-3 sm:py-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-2xl outline-none will-change-transform lg:px-3 lg:py-1.5"
             whileHover={reduceMotion ? {} : { scale: 1.04 }}
@@ -261,8 +261,8 @@ export function Navbar() {
               className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-accent/45 shadow-[0_0_22px_-2px_color-mix(in_oklch,var(--accent)_32%,transparent)]"
             />
             <Image
-              src="/AF-navbar-logo.svg"
-              alt="AF logo"
+              src="/PM-navbar-logo.svg"
+              alt="PM logo"
               width={72}
               height={28}
               priority

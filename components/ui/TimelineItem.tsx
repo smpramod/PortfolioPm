@@ -28,6 +28,19 @@ export function TimelineItem({ entry }: { entry: ExperienceEntry }) {
             </span>
           ))}
         </div>
+        {entry.certificateUrl && (
+          <div className="pt-1">
+            <a
+              href={entry.certificateUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="interactive"
+              className="inline-flex items-center gap-1 font-mono text-[length:var(--text-mono)] text-warm transition-colors hover:text-text-primary"
+            >
+              View Credential ↗
+            </a>
+          </div>
+        )}
       </div>
     </article>
   );

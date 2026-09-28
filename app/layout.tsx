@@ -24,9 +24,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abhishek Farande — Software Developer",
+  title: "Pramod Margudre — Backend Developer & Software Engineer",
   description:
-    "Software Developer at Seratek Systems building multi-tenant College ERP modules with Next.js, NestJS, and MongoDB.",
+    "Backend Developer at Seratek Systems shipping production features using NestJS, Redis, MongoDB, and TypeScript.",
 };
 
 export default function RootLayout({

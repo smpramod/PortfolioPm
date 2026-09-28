@@ -6,9 +6,33 @@ import type { ContactFormState } from "./types";
 
 import { headers } from "next/headers";
 
-const resendApiKey = process.env.RESEND_API_KEY;
-const contactToEmail = process.env.CONTACT_TO_EMAIL ?? SITE.emailWork;
-const resendFromEmail = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
+import fs from "fs";
+import path from "path";
+
+function getEnvVar(key: string, defaultValue?: string): string | undefined {
+  if (process.env[key]) return process.env[key];
+
+  try {
+    const cwd = process.cwd();
+    const envFiles = [".env.local", ".env", ".env.example"];
+    for (const file of envFiles) {
+      const fullPath = path.join(cwd, file);
+      if (fs.existsSync(fullPath)) {
+        const text = fs.readFileSync(fullPath, "utf-8");
+        const match = text.match(new RegExp(`^\\s*${key}\\s*=\\s*([^\\r\\n]+)`, "m"));
+        if (match && match[1]?.trim()) {
+          const val = match[1].trim().replace(/^['"]|['"]$/g, "");
+          return val;
+        }
+      }
+    }
+  } catch (err) {
+    console.error(`[actions.ts] Failed to read fallback env for ${key}:`, err);
+  }
+
+  return defaultValue;
+}
+
 const NAME_MIN_LENGTH = 2;
 const NAME_MAX_LENGTH = 80;
 const MESSAGE_MIN_LENGTH = 10;
@@ -17,7 +41,7 @@ const EMAIL_MAX_LENGTH = 254;
 
 const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
-const MAX_REQUESTS_PER_WINDOW = 3;
+const MAX_REQUESTS_PER_WINDOW = 5;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -41,6 +65,11 @@ export async function submitContact(
 ): Promise<ContactFormState> {
   const headersList = await headers();
   const ip = headersList.get("x-forwarded-for") || "unknown";
+
+  const resendApiKey = getEnvVar("RESEND_API_KEY");
+  const contactToEmail = getEnvVar("CONTACT_TO_EMAIL", "lbo.org.ask@gmail.com") ?? "lbo.org.ask@gmail.com";
+  const publicContactEmail = SITE.emailWork; // Publicly shown email: margudrep@gmail.com
+  const resendFromEmail = getEnvVar("RESEND_FROM_EMAIL", "onboarding@resend.dev") ?? "onboarding@resend.dev";
 
   if (isRateLimited(ip)) {
     return { ok: false, error: "Too many requests. Please try again later." };
@@ -86,7 +115,7 @@ export async function submitContact(
   if (!resendApiKey) {
     return {
       ok: false,
-      error: "Service unavailable.",
+      error: `Email service is not configured yet. Please email me directly at ${publicContactEmail}.`,
     };
   }
 
@@ -97,36 +126,38 @@ export async function submitContact(
       from: resendFromEmail,
       to: [contactToEmail],
       replyTo: email,
-      subject: `New contact form message from ${name}`,
+      subject: `New portfolio contact note from ${name}`,
       text: [
-        `Name: ${name}`,
-        `Email: ${email}`,
+        `Portfolio contact form submission for Pramod Margudre`,
+        `From: ${name} (${email})`,
         "",
+        `Message:`,
         message,
       ].join("\n"),
       html: `
-        <h2>New contact form message</h2>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <h2>New Portfolio Contact Note</h2>
+        <p><strong>From:</strong> ${escapeHtml(name)} (${escapeHtml(email)})</p>
+        <p><strong>Recipient:</strong> Pramod Margudre (${escapeHtml(publicContactEmail)})</p>
+        <hr style="border:none;border-top:1px solid #ddd;margin:16px 0;" />
         <p><strong>Message:</strong></p>
-        <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
+        <p style="white-space:pre-wrap;">${escapeHtml(message).replace(/\n/g, "<br />")}</p>
       `,
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("Resend API error:", error);
       return {
         ok: false,
-        error: "Failed to send message. Please try again later.",
+        error: `Could not send message automatically. Please email me directly at ${publicContactEmail}.`,
       };
     }
 
     return { ok: true, error: "" };
   } catch (err) {
-    console.error("Resend catch error:", err);
+    console.error("Resend error:", err);
     return {
       ok: false,
-      error: "Something went wrong while sending your message.",
+      error: `Could not send message automatically. Please email me directly at ${publicContactEmail}.`,
     };
   }
 }

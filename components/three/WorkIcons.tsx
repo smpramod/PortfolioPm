@@ -138,15 +138,15 @@ export function WorkIcons() {
   const items = useRef<(THREE.Group | null)[]>([]);
   const chassis = chassisProps(light);
   const grain = useMemo(() => makeGrainMap(), []);
-  const erpMap = useMemo(() => screenTexture("ERP  /  LIVE", [220, 160, 190, 110, 240, 150, 180]), []);
-  const labels = useMemo(() => [labelTexture("ERP"), labelTexture("PARK-O"), labelTexture("DIPLOMA")], []);
+  const cafeMap = useMemo(() => screenTexture("CAFE  /  LIVE", [220, 160, 190, 110, 240, 150, 180]), []);
+  const labels = useMemo(() => [labelTexture("CAFE"), labelTexture("SMARTCROP"), labelTexture("CLINIC")], []);
 
   useEffect(
     () => () => {
-      erpMap.dispose();
+      cafeMap.dispose();
       labels.forEach((label) => label.dispose());
     },
-    [erpMap, labels],
+    [cafeMap, labels],
   );
 
   useFrame((state, delta) => {
@@ -186,7 +186,7 @@ export function WorkIcons() {
         position={[-0.95, 0.22, 0.05]}
         scale={0.001}
       >
-        <ErpMonitor map={erpMap} chassis={chassis} />
+        <ErpMonitor map={cafeMap} chassis={chassis} />
         <mesh position={[0, -1.12, 0.2]}>
           <planeGeometry args={[0.7, 0.16]} />
           <meshBasicMaterial map={labels[0]} transparent toneMapped={false} />

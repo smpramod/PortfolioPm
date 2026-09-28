@@ -26,17 +26,17 @@
   <ellipse cx="256" cy="256" rx="150" ry="64" transform="rotate(28 256 256)"
            stroke="#1B716E" stroke-width="2" opacity=".35"/>
 
-  <!-- Monogram: A -->
-  <path d="M125 364L206 148H248L327 364H286L267 309H185L166 364H125ZM197 274H255L226 187L197 274Z"
+  <!-- Monogram: P -->
+  <path d="M 115 364 V 148 H 202 C 238 148 262 170 262 205 C 262 238 238 262 202 262 H 155 V 364 Z M 155 224 H 198 C 215 224 223 216 223 205 C 223 194 215 186 198 186 H 155 Z"
         fill="url(#cyan)" filter="url(#glow)"/>
 
-  <!-- Monogram: F -->
-  <path d="M286 148H389V184H326V237H379V273H326V364H286V148Z"
+  <!-- Monogram: M -->
+  <path d="M 276 364 V 148 H 314 L 356 218 L 398 148 H 436 V 364 H 398 V 222 L 368 274 H 344 L 314 222 V 364 Z"
         fill="#EAF8F5"/>
 
   <!-- Tech node -->
-  <circle cx="389" cy="184" r="9" fill="#75FFE9"/>
-  <circle cx="389" cy="184" r="18" stroke="#37E5D0" stroke-opacity=".3" stroke-width="2"/>
+  <circle cx="436" cy="148" r="9" fill="#75FFE9"/>
+  <circle cx="436" cy="148" r="18" stroke="#37E5D0" stroke-opacity=".3" stroke-width="2"/>
 
   <!-- Tiny circuit accents -->
   <path d="M102 398H150M362 398H410M95 115H142M370 115H417"

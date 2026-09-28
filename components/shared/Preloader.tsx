@@ -73,7 +73,7 @@ export function Preloader() {
             animate={{ opacity: 1, letterSpacing: "0.55em" }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            AF
+            PM
           </motion.p>
           <div className="h-[2px] w-48 overflow-hidden rounded-full bg-white/12 sm:w-56">
             <motion.div
